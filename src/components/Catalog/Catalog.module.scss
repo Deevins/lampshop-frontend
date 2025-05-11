@@ -1,0 +1,18 @@
+@import '../../styles/variables';
+
+.catalog {
+  padding: 1rem;
+  h2 {
+    margin-bottom: 1rem;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+
+  @media (max-width: $mobile-break) {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}

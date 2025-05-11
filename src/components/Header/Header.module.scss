@@ -1,0 +1,28 @@
+@import '../../styles/variables';
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border-bottom: 1px solid $gray-light;
+  z-index: 1000;
+  padding: 0.5rem 1rem;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  .logoText {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+}
+
+.icons {
+  display: flex;
+  gap: 1rem;
+  color: $text-dark;
+}
