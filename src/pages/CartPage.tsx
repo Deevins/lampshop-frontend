@@ -6,7 +6,6 @@ import { products, Product } from '../mocks/products'
 
 type CartItem = Product & { quantity: number }
 
-// Example starter cart; in real life you'd fetch this
 const initialCart: CartItem[] = products
     .slice(0, 2)
     .map(p => ({ ...p, quantity: 1 }))
@@ -15,7 +14,6 @@ const CartPage: React.FC = () => {
     const [cart, setCart] = useState<CartItem[]>(initialCart)
     const navigate = useNavigate()
 
-    // EMPTY STATE
     if (cart.length === 0) {
         return (
             <div className={styles.empty}>
@@ -27,7 +25,6 @@ const CartPage: React.FC = () => {
         )
     }
 
-    // NORMAL CART RENDER
     const increase = (id: string) =>
         setCart(cs =>
             cs.map(item =>

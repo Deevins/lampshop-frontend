@@ -5,10 +5,8 @@ import styles from './ItemPage.module.scss'
 
 const ItemPage: React.FC = () => {
     const { id } = useParams<{ id: string }>()
-    // fallback to first product if no match
     const product = products.find(p => p.id === id) ?? products[0]
 
-    // for demo: pretend we have 5 images per product
     const images = [product.imageUrl, product.imageUrl, product.imageUrl, product.imageUrl, product.imageUrl]
     const [mainImg, setMainImg] = React.useState(images[0])
 
@@ -19,7 +17,6 @@ const ItemPage: React.FC = () => {
             </nav>
 
             <div className={styles.content}>
-                {/* Image gallery */}
                 <div className={styles.imageSection}>
                     <img src={mainImg} alt={product.name} className={styles.mainImage} />
                     <div className={styles.thumbnails}>
@@ -35,7 +32,6 @@ const ItemPage: React.FC = () => {
                     </div>
                 </div>
 
-                {/* Details panel */}
                 <div className={styles.detailsSection}>
                     <h1 className={styles.title}>{product.name}</h1>
                     <div className={styles.price}>140 ₽</div>
