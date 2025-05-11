@@ -4,7 +4,7 @@ import ProductCard from './ProductCard';
 import Pagination from '../Pagination/Pagination';
 import { products } from '../../mocks/products';
 
-const ITEMS_PER_PAGE = 12;
+const ITEMS_PER_PAGE = 10;
 
 const Catalog: React.FC = () => {
     const [currentPage, setCurrentPage] = useState(1);

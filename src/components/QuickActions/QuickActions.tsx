@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import {
     AiOutlineHeart,
     AiOutlineClockCircle,
@@ -11,10 +12,11 @@ interface Props {
 }
 
 const QuickActions: React.FC<Props> = ({ onStatusClick }) => {
+    const navigate = useNavigate()
     const actions = [
-        { icon: <AiOutlineHeart />, label: 'Избранное' },
+        { icon: <AiOutlineHeart />, label: 'Избранное', onClick: () => navigate('/favorites') },
         { icon: <AiOutlineClockCircle />, label: 'Статус заказа', onClick: onStatusClick },
-        { icon: <AiOutlineShoppingCart />, label: 'Корзина' },
+        { icon: <AiOutlineShoppingCart />, label: 'Корзина', onClick: () => navigate('/cart') },
     ]
 
     return (
@@ -24,7 +26,7 @@ const QuickActions: React.FC<Props> = ({ onStatusClick }) => {
                     key={i}
                     className={styles.action}
                     title={a.label}
-                    onClick={() => a.onClick && a.onClick()}
+                    onClick={a.onClick}
                 >
                     <div className={styles.icon}>{a.icon}</div>
                     <div className={styles.label}>{a.label}</div>

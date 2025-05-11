@@ -1,26 +1,30 @@
 import React from 'react'
+import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header/Header'
 import NavMenu from './components/NavMenu/NavMenu'
-import Catalog from './components/Catalog/Catalog'
 import Footer from './components/Footer/Footer'
+import HomePage from './pages/HomePage'
+import FavoritesPage from './pages/FavoritesPage'
+import CartPage from './pages/CartPage'
+import './styles/global.scss'
 
 const App: React.FC = () => (
     <div className="app">
         <Header />
         <NavMenu />
-        <main className="container main-content">
-            <section style={{ paddingTop: '1rem', paddingBottom: '1rem' }}>
-                <h1>Магазин лампочек LampShop</h1>
-                <p>
-                    Добро пожаловать в LampShop — ваш надежный партнер в мире освещения! У нас вы найдете лампочки всех типов: от классических и светодиодных до умных решений для «умного дома».
-                </p>
-                <p>
-                    Мы предлагаем качественную продукцию от ведущих производителей по выгодным ценам, с доставкой по всей России.
-                </p>
-            </section>
-            <Catalog />
+
+        <main className="main-content">
+            <div className="container">
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/favorites" element={<FavoritesPage />} />
+                    <Route path="/cart" element={<CartPage />} />
+                </Routes>
+            </div>
         </main>
+
         <Footer />
     </div>
-);
+)
+
 export default App
