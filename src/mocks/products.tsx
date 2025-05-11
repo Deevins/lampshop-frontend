@@ -9,7 +9,7 @@ export interface Product {
     imageUrl: string
 }
 
-export const products: Product[] = Array.from({ length: 12 }).map((_, i) => ({
+export const products: Product[] = Array.from({ length: 30 }).map((_, i) => ({
     id: `${i + 1}`,
     name: 'Светодиодная лампа MR16 GU5.3 7Вт 220В 3000K',
     price: 140,

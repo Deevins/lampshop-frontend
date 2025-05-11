@@ -22,7 +22,7 @@ const ProductCard: React.FC<Props> = ({ product }) => (
             <p className={styles.name}>{product.name}</p>
             <div className={styles.actions}>
                 <button disabled={!product.available}>В корзину</button>
-                {product.liked ? <AiFillHeart /> : <AiOutlineHeart />}
+                {product.liked ? <AiFillHeart style={{color:"red"}} /> : <AiOutlineHeart />}
             </div>
         </div>
     </div>

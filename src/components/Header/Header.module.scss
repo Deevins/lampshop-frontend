@@ -25,4 +25,14 @@
   display: flex;
   gap: 1rem;
   color: $text-dark;
+
+  svg {
+    border-radius: 4px;
+    transition: background 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+  }
 }

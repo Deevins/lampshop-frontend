@@ -1,26 +1,27 @@
 @import '../../styles/variables';
 
 .card {
-  background: #fff;                /* white card */
+  background: #fff;
   border: 1px solid $gray-light;
   border-radius: 8px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  width: 100%;
+}
 
-  img {
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
-    background: #fafafa;
-  }
+img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  background: #fafafa;
 }
 
 .info {
   padding: 0.5rem;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  flex: 1;
   justify-content: space-between;
 }
 
@@ -63,7 +64,11 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 0.85rem;
+    transition: filter 0.2s ease;
 
+    &:hover:not(:disabled) {
+      filter: brightness(90%);
+    }
     &:disabled {
       background: $gray-light;
       cursor: not-allowed;
@@ -73,5 +78,10 @@
   svg {
     cursor: pointer;
     font-size: 1.2rem;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 }

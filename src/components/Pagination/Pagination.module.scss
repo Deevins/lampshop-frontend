@@ -1,0 +1,30 @@
+@use '../../styles/index' as *;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+
+  button {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid $gray-light;
+    background: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+
+    &:hover:not(:disabled) {
+      background: $gray-light;
+    }
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+  .active {
+    background: $primary;
+    color: #fff;
+    border-color: $primary;
+  }
+}
