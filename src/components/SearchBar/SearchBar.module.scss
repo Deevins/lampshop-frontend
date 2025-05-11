@@ -1,16 +1,14 @@
-@use '../../styles/index' as *;
+@use '../../styles/variables' as *;
 
 .searchBar {
   display: flex;
-  flex: 1 1 auto;
+  flex: 1;
   min-width: 0;
   max-width: 500px;
-  margin: 0 1rem;
 
   input {
     flex: 1;
     min-width: 0;
-    width: 100%;
     padding: 0.5rem;
     border: 1px solid $gray-light;
     border-right: none;
@@ -24,7 +22,7 @@
     background: #fff;
     cursor: pointer;
     border-radius: 0 4px 4px 0;
-    transition: filter 0.2s ease;
+    transition: filter 0.2s;
 
     &:hover {
       filter: brightness(90%);
@@ -34,7 +32,6 @@
 
 @media (max-width: $mobile-break) {
   .searchBar {
-    flex: 1 1 100%;
     max-width: 100%;
     margin: 0.5rem 0;
   }

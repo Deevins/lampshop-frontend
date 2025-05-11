@@ -1,6 +1,5 @@
-@use './index' as *;
+@use './variables' as *;
 
-/* Reset & global */
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -33,14 +32,13 @@ ul {
   min-height: 100vh;
 }
 
+.main-content {
+  flex: 1;
+}
+
 .container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
-  box-sizing: border-box;
-}
-
-.main-content {
-  flex: 1;
 }

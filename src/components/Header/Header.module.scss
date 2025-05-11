@@ -1,38 +1,53 @@
-@import '../../styles/variables';
+@use '../../styles/variables' as *;
 
 .header {
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid $gray-light;
+}
+
+.inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #fff;
-  border-bottom: 1px solid $gray-light;
-  z-index: 1000;
-  padding: 0.5rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.25rem 1rem;
+  flex-wrap: wrap;
 }
 
-.left {
+.logo {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  font-weight: bold;
 
-  .logoText {
-    font-size: 1.25rem;
-    font-weight: bold;
+  svg {
+    font-size: 1.5rem;
   }
 }
 
-.icons {
+.search {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+  padding: 0 1rem;
+}
+
+.actions {
   display: flex;
   gap: 1rem;
-  color: $text-dark;
+}
 
-  svg {
-    border-radius: 4px;
-    transition: background 0.2s ease, transform 0.2s ease;
-
-    &:hover {
-      transform: scale(1.2);
-      cursor: pointer;
-    }
+@media (max-width: $mobile-break) {
+  .inner {
+    flex-direction: column;
+    align-items: center;
+  }
+  .logo, .search, .actions {
+    width: 100%;
+    justify-content: center;
+    margin: 0.25rem 0;
   }
 }

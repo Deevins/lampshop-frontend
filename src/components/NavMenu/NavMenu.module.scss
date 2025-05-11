@@ -1,27 +1,33 @@
-@import '../../styles/variables';
+@use '../../styles/variables' as *;
 
 .nav {
-  width: 100%;
   background: #fff;
   border-bottom: 1px solid $gray-light;
 }
 
+/* Accordion header hidden on desktop */
+.header {
+  display: none;
+}
+
+/* Default horizontal list container */
 .container {
   overflow-x: auto;
 }
 
 ul {
   display: flex;
-  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1rem;
   padding: 0.5rem 0;
   margin: 0;
-  justify-content: space-between;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 li {
-  flex: 0 0 auto;
-  padding: 0 0.5rem;
+  flex: 0 1 auto;
+  padding: 0.25rem 0.5rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -32,5 +38,48 @@ li {
 
   &:hover {
     background: $gray-light;
+  }
+}
+
+/* Small screens: show accordion header, hide list until open */
+@media (max-width: $mobile-break) {
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-bottom: 1px solid $gray-light;
+  }
+  .title {
+    font-weight: bold;
+    color: $text-dark;
+  }
+  .toggle {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $text-dark;
+    padding: 0;
+  }
+  .container {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .open {
+    max-height: 100vh; /* full viewport height */
+  }
+  /* when open on small screens, list vertically */
+  .container.open ul {
+    flex-direction: column;
+    white-space: normal;
+    gap: 0.5rem 0; /* vertical gap only */
+  }
+  ul {
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    justify-content: flex-start;
   }
 }

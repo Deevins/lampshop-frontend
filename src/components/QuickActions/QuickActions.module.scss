@@ -1,10 +1,11 @@
-@use '../../styles/index' as *;
+@use '../../styles/variables' as *;
 
 .quickActions {
   display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0.25rem 0;
   justify-content: flex-start;
-  gap: 1rem;           /* tighter spacing */
-  padding: 0.25rem 0;   /* minimal vertical padding */
 }
 
 .action {
@@ -12,9 +13,9 @@
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition: background 0.2s, transform 0.2s;
   border-radius: 4px;
-  padding: 0.2rem;      /* smaller hit area */
+  padding: 0.2rem;
 
   &:hover {
     background: $gray-light;
@@ -23,12 +24,19 @@
 }
 
 .icon {
-  font-size: 1.5rem;    /* smaller icon */
+  font-size: 1.25rem;
   color: $text-dark;
 }
 
 .label {
-  margin-top: 0.15rem;
-  font-size: 0.75rem;   /* smaller text */
+  margin-top: 0.1rem;
+  font-size: 0.7rem;
   color: $text-dark;
+}
+
+@media(max-width: $mobile-break) {
+  .quickActions {
+    align-content: center;
+    justify-content: center;
+  }
 }
