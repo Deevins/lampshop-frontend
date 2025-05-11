@@ -1,19 +1,21 @@
-@import '../../styles/variables';
+@use '../../styles/index' as *;
 
 .searchBar {
   display: flex;
-  flex: 1;
+  flex: 1 1 auto;
+  min-width: 0;
   max-width: 400px;
   margin: 0 1rem;
 
   input {
     flex: 1;
+    min-width: 0;
+    width: 100%;
     padding: 0.5rem;
     border: 1px solid $gray-light;
     border-right: none;
     border-radius: 4px 0 0 4px;
   }
-
   button {
     padding: 0 1rem;
     border: 1px solid $gray-light;
@@ -21,5 +23,13 @@
     background: #fff;
     cursor: pointer;
     border-radius: 0 4px 4px 0;
+  }
+}
+
+@media (max-width: $mobile-break) {
+  .searchBar {
+    flex: 1 1 100%;
+    max-width: 100%;
+    margin: 0.5rem 0;
   }
 }

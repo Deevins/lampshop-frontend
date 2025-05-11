@@ -4,13 +4,14 @@ import NavMenu from './components/NavMenu/NavMenu'
 import Catalog from './components/Catalog/Catalog'
 import Footer from './components/Footer/Footer'
 
+
 const App: React.FC = () => (
     <>
         <Header />
         <NavMenu />
         <div className="container">
             <main>
-                <section style={{ padding: '1rem', alignItems: "center" }}>
+                <section style={{ paddingTop: '1rem', paddingBottom: '1rem' }}>
                     <h1 >Магазин лампочек LampShop</h1>
                     <p>
                         Добро пожаловать в LampShop — ваш надежный партнер в мире освещения! У нас вы найдете лампочки всех типов: от классических и светодиодных до умных решений для «умного дома».
@@ -22,9 +23,7 @@ const App: React.FC = () => (
                 <Catalog />
             </main>
         </div>
-        <Footer />
+        <Footer/>
     </>
-
-)
-
+);
 export default App

@@ -1,4 +1,27 @@
-@import './variables';
+@use './index' as *;
+
+/* Reset & global */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f7f7f7;
+  color: $text-dark;
+  line-height: 1.4;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
 
 .container {
   width: 100%;
@@ -6,21 +29,4 @@
   margin: 0 auto;
   padding: 0 1rem;
   box-sizing: border-box;
-}
-
-html, body {
-  background: #fafafa !important;
-  color: #333 !important;
-}
-@media (prefers-color-scheme: dark) {
-  html, body {
-    background: #fafafa !important;
-    color: #333 !important;
-  }
-}
-
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
 }
