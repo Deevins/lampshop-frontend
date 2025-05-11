@@ -1,20 +1,18 @@
 import React from 'react'
-import { FaLightbulb } from 'react-icons/fa'
-import { AiOutlineHeart, AiOutlineClockCircle, AiOutlineShoppingCart } from 'react-icons/ai'
+import {FaLightbulb} from 'react-icons/fa'
 import SearchBar from '../SearchBar/SearchBar'
 import styles from './Header.module.scss'
+import QuickActions from "../QuickActions/QuickActions.tsx";
 
 const Header: React.FC = () => (
     <header className={styles.header}>
         <div className={styles.left}>
-            <FaLightbulb size={32} />
+            <FaLightbulb size={32}/>
             <span className={styles.logoText}>LampShop</span>
         </div>
-        <SearchBar />
+        <SearchBar/>
         <div className={styles.icons}>
-            <AiOutlineHeart size={24} />
-            <AiOutlineClockCircle size={24} />
-            <AiOutlineShoppingCart size={24} />
+            <QuickActions/>
         </div>
     </header>
 )

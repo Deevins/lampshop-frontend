@@ -1,0 +1,34 @@
+@use '../../styles/index' as *;
+
+.quickActions {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;           /* tighter spacing */
+  padding: 0.25rem 0;   /* minimal vertical padding */
+}
+
+.action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  border-radius: 4px;
+  padding: 0.2rem;      /* smaller hit area */
+
+  &:hover {
+    background: $gray-light;
+    transform: translateY(-1px);
+  }
+}
+
+.icon {
+  font-size: 1.5rem;    /* smaller icon */
+  color: $text-dark;
+}
+
+.label {
+  margin-top: 0.15rem;
+  font-size: 0.75rem;   /* smaller text */
+  color: $text-dark;
+}
