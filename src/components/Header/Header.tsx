@@ -4,15 +4,17 @@ import SearchBar from '../SearchBar/SearchBar'
 import QuickActions from '../QuickActions/QuickActions'
 import OrderStatusModal from '../OrderStatusModal/OrderStatusModal'
 import styles from './Header.module.scss'
+import {useNavigate} from "react-router-dom";
 
 const Header: React.FC = () => {
     const [isModalOpen, setModalOpen] = useState(false)
+    const navigate = useNavigate()
 
     return (
         <>
             <header className={styles.header}>
                 <div className={styles.inner}>
-                    <div className={styles.logo}>
+                    <div className={styles.logo} onClick={ () => navigate('/')}>
                         <FaLightbulb />
                         <span>LampShop</span>
                     </div>
