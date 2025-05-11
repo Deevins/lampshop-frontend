@@ -1,4 +1,4 @@
-@import '../../styles/variables';
+@use '../../styles/index' as *;
 
 .card {
   background: #fff;
@@ -7,10 +7,17 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  height: 100%;
 }
 
-img {
+.linkArea {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  flex: 1;
+}
+
+.image {
   width: 100%;
   aspect-ratio: 1;
   object-fit: cover;
@@ -19,10 +26,6 @@ img {
 
 .info {
   padding: 0.5rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 .row {
@@ -48,40 +51,44 @@ img {
 
 .name {
   font-size: 0.9rem;
-  margin-bottom: 0.5rem;
+  margin: 0;
+  line-height: 1.2;
 }
 
 .actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0.5rem;
+  border-top: 1px solid $gray-light;
+}
 
-  button {
-    background: $primary;
-    border: none;
-    color: #fff;
-    padding: 0.4rem 0.8rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.85rem;
-    transition: filter 0.2s ease;
+.cartBtn {
+  background: $primary;
+  border: none;
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: filter 0.2s ease;
 
-    &:hover:not(:disabled) {
-      filter: brightness(90%);
-    }
-    &:disabled {
-      background: $gray-light;
-      cursor: not-allowed;
-    }
+  &:disabled {
+    background: $gray-light;
+    cursor: not-allowed;
   }
 
-  svg {
-    cursor: pointer;
-    font-size: 1.2rem;
-    transition: transform 0.2s ease;
+  &:hover:not(:disabled) {
+    filter: brightness(90%);
+  }
+}
 
-    &:hover {
-      transform: scale(1.2);
-    }
+.heart {
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.2);
   }
 }

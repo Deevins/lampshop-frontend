@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage'
 import FavoritesPage from './pages/FavoritesPage'
 import CartPage from './pages/CartPage'
 import './styles/global.scss'
+import ItemPage from "./pages/ItemPage";
 
 const App: React.FC = () => (
     <div className="app">
@@ -19,6 +20,7 @@ const App: React.FC = () => (
                     <Route path="/" element={<HomePage />} />
                     <Route path="/favorites" element={<FavoritesPage />} />
                     <Route path="/cart" element={<CartPage />} />
+                    <Route path="/product/:id" element={<ItemPage />} />
                 </Routes>
             </div>
         </main>

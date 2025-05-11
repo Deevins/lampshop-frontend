@@ -1,7 +1,7 @@
-@use '../../styles/variables' as *;
+@use '../../styles/index' as *;
 
 .catalog {
-  margin-top: 2rem;
+  padding: 1rem 0;
 
   h2 {
     margin-bottom: 1rem;
@@ -10,12 +10,16 @@
 
 .grid {
   display: grid;
-  gap: 3rem;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+
+  @media (max-width: $mobile-break) {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
 }
 
-@media(max-width: $mobile-break) {
-  .grid {
-    grid-template-columns:repeat(auto-fill, minmax(140px, 1fr));
-  }
+.link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
 }
