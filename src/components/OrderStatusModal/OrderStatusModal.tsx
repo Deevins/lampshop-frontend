@@ -17,7 +17,7 @@ const OrderStatusModal: React.FC<Props> = ({open, onClose}) => {
     const handleCheckStatus = () => {
         if (!orderId.trim()) return
         navigate(`/order/${orderId.trim()}`)
-        onClose() // закрываем модалку после перехода
+        onClose()
     }
 
     return (
