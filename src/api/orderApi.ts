@@ -28,5 +28,6 @@ export interface OrderRequest {
 
 export const createOrder = async (data: OrderRequest) => {
     const response = await axios.post(`${ORDER_BASE_URL}/checkout`, data)
-    return response.data.id as string
+
+    return response.data.order_id as string
 }

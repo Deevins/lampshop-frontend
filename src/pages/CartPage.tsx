@@ -1,4 +1,3 @@
-// CartPage.tsx
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
@@ -6,19 +5,10 @@ import styles from './CartPage.module.scss'
 import { products, Product } from '../mocks/products'
 import CartItem from '../components/CartItem/CartItem.tsx'
 import ConfirmModal from '../components/ConrimModal/ConfirmModal.tsx'
-import { createOrder } from '../api/orderApi.ts'
-import OrderSuccessModal from '../components/CartItem/OrderSuccessModal.tsx'
-import { useForm } from 'react-hook-form'
+import {createOrder} from "../api/orderApi.ts";
+import OrderSuccessModal from "../components/CartItem/OrderSuccessModal.tsx";
 
 type CartItem = Product & { quantity: number }
-
-type CustomerForm = {
-    firstName: string
-    lastName: string
-    email: string
-    phone: string
-    address: string
-}
 
 const initialCart: CartItem[] = products
     .map(p => ({ ...p, quantity: 1 }))
@@ -27,30 +17,38 @@ const CartPage: React.FC = () => {
     const [cart, setCart] = useState<CartItem[]>(initialCart)
     const [confirmOpen, setConfirmOpen] = useState(false)
     const [pendingRemoveId, setPendingRemoveId] = useState<string | null>(null)
-    const [successOrderId, setSuccessOrderId] = useState<string | null>(null)
+    const [customer, setCustomer] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        address: '',
+    })
 
     const navigate = useNavigate()
 
-    const {
-        register,
-        handleSubmit,
-        reset
-    } = useForm<CustomerForm>()
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target
 
-    const onSubmit = async (data: CustomerForm) => {
+        setCustomer(prev => ({ ...prev, [name]: value }))
+    }
+    const [successOrderId, setSuccessOrderId] = useState<string | null>(null)
+
+    const handleSubmit = async () => {
         try {
+            console.log(cart)
             const orderData = {
-                customer: data,
+                customer,
                 items: cart.map(item => ({
                     productId: item.id,
+                    unit_price: item.price,
                     quantity: item.quantity
                 }))
             }
 
             const id = await createOrder(orderData)
             setSuccessOrderId(id)
-            setCart([])
-            reset()
+            console.log(id)
         } catch (e) {
             console.error('Ошибка оформления заказа:', e)
         }
@@ -120,37 +118,37 @@ const CartPage: React.FC = () => {
                 <span className={styles.totalValue}>{total} ₽</span>
             </div>
 
-            <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+            <form className={styles.form} onSubmit={e => { e.preventDefault(); handleSubmit() }}>
                 <h3 className={styles.formTitle}>Оформление заказа</h3>
                 <div className={styles.formRow}>
                     <div>
                         <label>Имя:</label>
-                        <input type="text" {...register('firstName', { required: true })} />
+                        <input type="text" name="firstName" value={customer.firstName} onChange={handleChange} required />
                     </div>
                     <div>
                         <label>Фамилия:</label>
-                        <input type="text" {...register('lastName', { required: true })} />
+                        <input type="text" name="lastName" value={customer.lastName} onChange={handleChange} required />
                     </div>
                 </div>
                 <div className={styles.formRow}>
                     <div>
                         <label>E-mail:</label>
-                        <input type="email" {...register('email', { required: true })} />
+                        <input type="email" name="email" value={customer.email} onChange={handleChange} required />
                     </div>
                     <div>
                         <label>Телефон:</label>
-                        <input type="tel" {...register('phone', { required: true })} />
+                        <input type="tel" name="phone" value={customer.phone} onChange={handleChange} required />
                     </div>
                 </div>
                 <div className={styles.formColumn}>
                     <label>Адрес:</label>
-                    <input type="text" {...register('address', { required: true })} />
-                </div>
-
-                <div className={styles.actions}>
-                    <button className={styles.orderBtn} type="submit">Оформить заказ</button>
+                    <input type="text" name="address" value={customer.address} onChange={handleChange} required />
                 </div>
             </form>
+
+            <div className={styles.actions}>
+                <button className={styles.orderBtn} onClick={handleSubmit}>Оформить заказ</button>
+            </div>
 
             <ConfirmModal
                 open={confirmOpen}
