@@ -11,22 +11,31 @@ export const getOrderStatusById = async (id: string) => {
 }
 
 export interface CustomerInfo {
-    firstName: string
-    lastName: string
+    first_name: string
+    last_name: string
     email: string
     phone: string
     address: string
 }
 
-export interface OrderRequest {
-    items: {
-        productId: string
-        quantity: number
-    }[]
-    customer: CustomerInfo
+export interface OrderItemInput {
+    product_id: string
+    qty: number
+    unit_price: number
 }
 
-export const createOrder = async (data: OrderRequest) => {
+export interface PaymentInput {
+    method: string
+    paid: boolean
+}
+
+export interface CreateOrderRequest {
+    items: OrderItemInput[]
+    customer: CustomerInfo
+    payment: PaymentInput
+}
+
+export const createOrder = async (data: CreateOrderRequest) => {
     const response = await axios.post(`${ORDER_BASE_URL}/checkout`, data)
 
     return response.data.order_id as string
