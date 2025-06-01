@@ -1,4 +1,5 @@
 @use '../styles/index' as *;
+@use '../styles/index' as *;
 
 .page {
   padding: 2rem 0;
@@ -7,13 +8,16 @@
 .breadcrumbs {
   font-size: 0.9rem;
   margin-bottom: 1rem;
+
   a {
     color: $primary;
     text-decoration: none;
+
     &:hover {
       text-decoration: underline;
     }
   }
+
   span {
     color: $text-dark;
   }
@@ -41,33 +45,6 @@
   object-fit: contain;
 }
 
-.thumbnails {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 1rem;
-  overflow-x: auto;
-
-  .thumb {
-    flex: 0 0 auto;
-    padding: 2px;
-    border: 2px solid transparent;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: border-color 0.2s ease;
-
-    img {
-      width: 60px;
-      height: 60px;
-      object-fit: cover;
-      border-radius: 4px;
-    }
-
-    &.active {
-      border-color: $primary;
-    }
-  }
-}
-
 .detailsSection {
   flex: 1;
   display: flex;
@@ -90,13 +67,19 @@
   color: $success;
 }
 
+.statusUnavailable {
+  color: $error;
+}
+
 .stock {
   background: $gray-light;
+  opacity: 70%;
   padding: 0.75rem 1rem;
   border-radius: 4px;
   font-size: 0.95rem;
+
   span {
-    color: $text-dark;
+    color: black;
     font-weight: bold;
   }
 }
@@ -113,6 +96,12 @@
 
   &:hover {
     filter: brightness(90%);
+  }
+
+  &:disabled {
+    background: $gray-light;
+    color: $text-dark;
+    cursor: not-allowed;
   }
 }
 
