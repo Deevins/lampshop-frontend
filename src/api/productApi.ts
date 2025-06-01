@@ -1,28 +1,32 @@
 import axios from 'axios';
-import { Product } from '../types/product';
+import { ProductFull} from '../types/product';
+import {Category} from "../types/category.ts";
 
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8081/api';
+const BASE_URL = 'http://localhost:8081';
 
-export const fetchAllProducts = async (): Promise<Product[]> => {
-    const res = await axios.get(`${BASE_URL}/products`);
+export const getProductsMainCatalog = async (): Promise<ProductFull[]> => {
+    const res = await axios.get(`${BASE_URL}/products`)
+
+    return res.data.map((p: any) => ({
+        id: p.id,
+        name: p.name,
+        price: p.price,
+        is_active: p.stock_qty > 0 && p.is_active,
+        imageUrl: p.image_url,
+        stock_qty: p.stock_qty,
+        description: p.description,
+    }))
+}
+
+export const fetchProductById = async (id: string): Promise<ProductFull> => {
+    const res = await axios.get<ProductFull>(`${BASE_URL}/products/${id}`);
+
     return res.data;
 };
 
-export const fetchProductById = async (id: number): Promise<Product> => {
-    const res = await axios.get(`${BASE_URL}/products/${id}`);
-    return res.data;
-};
 
-export const createProduct = async (product: Omit<Product, 'id'>): Promise<Product> => {
-    const res = await axios.post(`${BASE_URL}/products`, product);
+export const getCategories = async (): Promise<Category[]> => {
+    const res = await axios.get<Category[]>(`${BASE_URL}/categories`);
     return res.data;
-};
 
-export const updateProduct = async (id: number, product: Omit<Product, 'id'>): Promise<Product> => {
-    const res = await axios.put(`${BASE_URL}/products/${id}`, product);
-    return res.data;
-};
-
-export const deleteProduct = async (id: number): Promise<void> => {
-    await axios.delete(`${BASE_URL}/products/${id}`);
-};
+}

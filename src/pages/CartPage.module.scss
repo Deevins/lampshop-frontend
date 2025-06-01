@@ -164,4 +164,23 @@
       filter: brightness(95%);
     }
   }
+
+
+  .removeBtn {
+    background: transparent;
+    border: none;
+    color: #b4b4b4;
+    font-size: 1.25rem;
+    cursor: pointer;
+    margin-left: auto;
+
+    &:hover {
+      color: $error;
+    }
+
+    @media (max-width: $mobile-break) {
+      align-self: flex-end;
+      margin-top: 0.5rem;
+    }
+  }
 }

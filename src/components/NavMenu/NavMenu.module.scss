@@ -5,12 +5,10 @@
   border-bottom: 1px solid $gray-light;
 }
 
-/* Accordion header hidden on desktop */
 .header {
   display: none;
 }
 
-/* Default horizontal list container */
 .container {
   overflow-x: auto;
 }
@@ -36,12 +34,13 @@ li {
   cursor: pointer;
   transition: background 0.2s ease;
 
+  border-radius: 8%;
+
   &:hover {
     background: $gray-light;
   }
 }
 
-/* Small screens: show accordion header, hide list until open */
 @media (max-width: $mobile-break) {
   .header {
     display: flex;

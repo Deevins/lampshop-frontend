@@ -19,10 +19,12 @@
     padding: 0 1rem;
     border: 1px solid $gray-light;
     border-left: none;
-    background: #fff;
+    background: #f6f6f6;
     cursor: pointer;
     border-radius: 0 4px 4px 0;
     transition: filter 0.2s;
+
+
 
     &:hover {
       filter: brightness(90%);

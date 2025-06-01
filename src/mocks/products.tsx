@@ -5,7 +5,6 @@ export interface Product {
     name: string
     price: number
     available: boolean
-    liked: boolean
     imageUrl: string
 }
 
@@ -14,7 +13,6 @@ export const products: Product[] = Array.from({ length: 30 }).map((_, i) => ({
     name: 'Светодиодная лампа MR16 GU5.3 7Вт 220В 3000K',
     price: 140,
     available: i % 3 !== 1,
-    liked: i % 4 === 2,
     imageUrl: `${Image}`
 }))
 

@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
+import {useNavigate} from 'react-router-dom'
 import Modal from '../Modal/Modal'
 import styles from './OrderStatusModal.module.scss'
 
@@ -7,9 +8,18 @@ interface Props {
     onClose: () => void
 }
 
-const OrderStatusModal: React.FC<Props> = ({ open, onClose }) => {
+const OrderStatusModal: React.FC<Props> = ({open, onClose}) => {
     const [orderId, setOrderId] = useState('')
+    const navigate = useNavigate()
+
     if (!open) return null
+
+    const handleCheckStatus = () => {
+        if (!orderId.trim()) return
+        navigate(`/order/${orderId.trim()}`)
+        onClose() // закрываем модалку после перехода
+    }
+
     return (
         <Modal onClose={onClose}>
             <h2 className={styles.title}>Статус заказа</h2>
@@ -18,12 +28,9 @@ const OrderStatusModal: React.FC<Props> = ({ open, onClose }) => {
                 type="text"
                 placeholder="Номер заказа"
                 value={orderId}
-                onChange={e => setOrderId(e.target.value)}
+                onChange={(e) => setOrderId(e.target.value)}
             />
-            <button
-                className={styles.button}
-                onClick={() => alert(`Checking status for ${orderId}`)}
-            >
+            <button className={styles.button} onClick={handleCheckStatus}>
                 Узнать статус
             </button>
         </Modal>

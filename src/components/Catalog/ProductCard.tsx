@@ -1,26 +1,29 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
+import {Link} from 'react-router-dom'
 import styles from './ProductCard.module.scss'
-import { Product } from '../../mocks/products'
+import {ProductFull} from "../../types/product.ts";
 
-interface Props { product: Product }
+interface Props {
+    product: ProductFull
+}
 
-const ProductCard: React.FC<Props> = ({ product }) => (
+const ProductCard: React.FC<Props> = ({product}) => (
     <div className={styles.card}>
         <Link to={`/product/${product.id}`} className={styles.linkArea}>
-            <img src={product.imageUrl} alt={product.name} className={styles.image} />
+            <img
+                src={'https://santhimetaleshop.in/cdn/shop/files/Untitleddesign_26a5d7f4-82b7-4e7a-ac43-068a31086beb.png?v=1694498000&width=1445'}
+                alt={product.name} className={styles.image}/>
             <div className={styles.info}>
                 <div className={styles.row}>
                     <span className={styles.price}>{product.price} ₽</span>
                     <span
                         className={
-                            product.available
+                            product.is_active && product.stock_qty > 0
                                 ? styles.available
                                 : styles.unavailable
                         }
                     >
-            {product.available ? 'В наличии' : 'Нет в наличии'}
+            {product.is_active && product.stock_qty > 0 ? 'В наличии' : 'Нет в наличии'}
           </span>
                 </div>
                 <p className={styles.name}>{product.name}</p>
@@ -29,15 +32,11 @@ const ProductCard: React.FC<Props> = ({ product }) => (
 
         <div className={styles.actions}>
             <button
-                disabled={!product.available}
+                disabled={!product.is_active || product.stock_qty <= 0}
                 className={styles.cartBtn}
             >
                 В корзину
             </button>
-            {product.liked
-                ? <AiFillHeart className={styles.heart} />
-                : <AiOutlineHeart className={styles.heart} />
-            }
         </div>
     </div>
 )

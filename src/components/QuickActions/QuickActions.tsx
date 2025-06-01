@@ -1,7 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
-    AiOutlineHeart,
     AiOutlineClockCircle,
     AiOutlineShoppingCart,
 } from 'react-icons/ai'
@@ -14,7 +13,6 @@ interface Props {
 const QuickActions: React.FC<Props> = ({ onStatusClick }) => {
     const navigate = useNavigate()
     const actions = [
-        { icon: <AiOutlineHeart />, label: 'Избранное', onClick: () => navigate('/favorites') },
         { icon: <AiOutlineClockCircle />, label: 'Статус заказа', onClick: onStatusClick },
         { icon: <AiOutlineShoppingCart />, label: 'Корзина', onClick: () => navigate('/cart') },
     ]
