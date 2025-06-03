@@ -39,7 +39,7 @@ const OrderStatusPage = () => {
                 <h2 className={styles.title}>Статус заказа</h2>
                 <div className={styles.row}>
                     <span className={styles.label}>Заказ:</span>
-                    <span className={styles.value}>№{order.order_id}</span>
+                    <span className={styles.value}>{order.order_id}</span>
                 </div>
                 <div className={styles.row}>
                     <span className={styles.label}>Статус:</span>

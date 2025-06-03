@@ -15,7 +15,7 @@ const OrderSuccessModal: React.FC<Props> = ({ orderId, onClose }) => {
             <div className={styles.modal}>
                 <button className={styles.closeBtn} onClick={onClose}>×</button>
                 <h2 className={styles.title}>Заказ создан</h2>
-                <p className={styles.text}>Заказу присвоен <strong>№{orderId}</strong>.</p>
+                <p className={styles.text}>Заказу присвоен <strong>№ {orderId}</strong>.</p>
                 <p className={styles.text}>Наши специалисты свяжутся с Вами в ближайшее время.</p>
                 <p className={styles.text}>
                     Следить за заказом можно <span className={styles.link} onClick={() => navigate(`/order/${orderId}`)}>по ссылке</span>.

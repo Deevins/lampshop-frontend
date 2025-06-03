@@ -13,7 +13,7 @@ type Props = {
 const CartItem: React.FC<Props> = ({ item, onIncrease, onDecrease, onRemove }) => {
     return (
         <div className={styles.item}>
-            <img src={item.imageUrl} alt={item.name} className={styles.image} />
+            <img src={'https://santhimetaleshop.in/cdn/shop/files/Untitleddesign_26a5d7f4-82b7-4e7a-ac43-068a31086beb.png?v=1694498000&width=1445'} alt={item.name} className={styles.image} />
             <div className={styles.details}>
                 <p className={styles.name}>{item.name}</p>
                 <p className={styles.price}>{item.price} ₽</p>
